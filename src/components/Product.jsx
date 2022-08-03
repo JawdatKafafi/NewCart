@@ -8,7 +8,6 @@ class Product extends Component {
   handleIncrement = () => {
     this.setState({ quantity: this.state.quantity + 1 });
   };
-  handleDelete = () => {};
 
   render() {
     return (
@@ -17,17 +16,12 @@ class Product extends Component {
         <button onClick={this.handleIncrement} className="btn btn-primary ">
           Increment
         </button>
-        {this.state.tags.map((tag) => (
-          <li key={tag.id}>
-            {tag.name}
-            <button
-              onClick={this.props.OnDelete(this.props.product.id)}
-              className="btn btn-danger"
-            >
-              Delete
-            </button>
-          </li>
-        ))}
+        <button
+          onClick={() => this.props.OnDelete(this.props.product.id)}
+          className="btn btn-danger"
+        >
+          Delete
+        </button>
       </div>
     );
   }
