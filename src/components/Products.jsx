@@ -16,8 +16,12 @@ class Products extends Component {
     this.setState({ products });
   };
 
-  handleIncrement = () => {
-    this.setState({ quantity: this.state.quantity + 1 });
+  handleIncrement = (product) => {
+    const products = [...this.state.products];
+    const index = products.indexOf(product);
+    products[index] = { ...product };
+    products[index].quantity++;
+    this.setState({ products });
   };
 
   handleReset = () => {
