@@ -2,19 +2,17 @@ import React, { Component } from "react";
 
 class Product extends Component {
   render() {
+    const { onIncrement, OnDelete, product } = this.props;
     return (
       <div>
         <span className={this.getBadgeClasses()}>{this.formatQuantity()}</span>
         <button
-          onClick={() => this.props.onIncrement(this.props.product)}
+          onClick={() => onIncrement(product)}
           className="btn btn-primary "
         >
           Increment
         </button>
-        <button
-          onClick={() => this.props.OnDelete(this.props.product.id)}
-          className="btn btn-danger"
-        >
+        <button onClick={() => OnDelete(product.id)} className="btn btn-danger">
           Delete
         </button>
       </div>
