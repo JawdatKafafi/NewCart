@@ -6,9 +6,9 @@ class NavBar extends Component {
       <nav className="navbar navbar-light bg-light">
         <div className="container-fluid">
           <span className="navbar-brand h1">
-            Navbar{" "}
-            <span className="badge rounded-pill bg-secondary ms-2">
-              {this.props.productsCount}
+            Navbar
+            <span className="badge rounded-pill bg-secondary ms-2 ">
+              {this.props.productCount}
             </span>
           </span>
         </div>

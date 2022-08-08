@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import NavBar from "./components/NavBar";
 import Products from "./components/Products";
-import Navbar from "./components/NavBar";
 class App extends Component {
   state = {
     products: [
@@ -24,6 +23,14 @@ class App extends Component {
     this.setState({ products });
   };
 
+  handleDecrement = (product) => {
+    const products = [...this.state.products];
+    const index = products.indexOf(product);
+    products[index] = { ...product };
+    products[index].quantity--;
+    this.setState({ products });
+  };
+
   handleReset = () => {
     const products = this.state.products.map((product) => ({
       ...product,
@@ -36,13 +43,14 @@ class App extends Component {
     const { products } = this.state;
     return (
       <>
-        <NavBar productCount={products.length} />
+        <NavBar productCount={products.filter((p) => p.quantity > 0).length} />
         <div className="container mt-4">
           <Products
             products={products}
             onIncrement={this.handleIncrement}
             onDelete={this.handleDelete}
             onReset={this.handleReset}
+            onDecrement={this.handleDecrement}
           />
         </div>
       </>
